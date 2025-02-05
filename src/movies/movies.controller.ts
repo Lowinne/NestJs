@@ -17,4 +17,12 @@ export class MoviesController {
     ){
         return this.moviesService.search((include_adult === 'true'), language, primary_release_year, page, region, year);
     }
+
+    @Get('searchByName')
+    async searchByName(
+        @Query('name') name: string,
+        @Query('page') page: Number,
+    ) {
+        return this.moviesService.searchByName(name, page)
+    }
 }
