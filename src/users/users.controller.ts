@@ -15,6 +15,7 @@ export class UsersController {
     return this.usersService.create(createUserDto);
   }
 
+  @UseGuards(AuthGuard)
   @Get()
   findAll() {
     return this.usersService.findAll();
@@ -50,9 +51,4 @@ export class UsersController {
     return this.usersService.signIn(loginDto.email, loginDto.password)
   }
 
-  @UseGuards(AuthGuard)
-  @Get('profile')
-  getProfile(@Request() req) {
-    return req.user;
-  }
 }

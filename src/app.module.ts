@@ -6,20 +6,23 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersController } from './users/users.controller';
 import { DataSource } from 'typeorm';
 import { User } from './users/entities/user.entity';
+import { MoviesModule } from './movies/movies.module';
 
 @Module({
-  imports: [UsersModule,
+  imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
       port: 5432,
-      username: 'postgres',
-      password: 'root',
-      database: 'postgres',
+      username: process.env.DATABASE_USERNAME,
+      password: process.env.DATABASE_PASSWORD,
+      database: process.env.DATABASE_NAME,
       entities: [User],
       synchronize: true,
       autoLoadEntities: true,
     }),
+    UsersModule,
+    MoviesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
