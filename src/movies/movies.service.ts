@@ -3,11 +3,26 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { AxiosError, AxiosResponse } from 'axios';
 import { stringify } from 'querystring';
 import { catchError, firstValueFrom, Observable, throwError } from 'rxjs';
-import { Int32 } from 'typeorm';
+import { Int32, Repository } from 'typeorm';
+import { Film } from './entities/film.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Resa } from './entities/resa.entity';
+import { Salle } from './entities/salle.entity';
+import { Session } from 'inspector/promises';
 
 @Injectable()
 export class MoviesService {
-  constructor(private readonly httpService: HttpService) {}
+  constructor(
+    private readonly httpService: HttpService,
+    @InjectRepository(Film)
+    private filmsRepository: Repository<Film>,
+    @InjectRepository(Resa)
+    private resasRepository: Repository<Resa>,
+    @InjectRepository(Salle)
+    private sallesRepository: Repository<Salle>,
+    @InjectRepository(Session)
+    private sessionRepository: Repository<Session>,
+    ) {}
 
   async searchByName(
     name: String,

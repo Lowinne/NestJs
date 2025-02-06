@@ -3,15 +3,22 @@ import { MoviesService } from './movies.service';
 import { MoviesController } from './movies.controller';
 import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Film } from './entities/film.entity';
+import { Resa } from './entities/resa.entity';
+import { Salle } from './entities/salle.entity';
+import { Session } from 'inspector/promises';
 
 @Module({
   imports: [
+    TypeOrmModule.forFeature([Film, Resa, Salle, Session]),
     ConfigModule.forRoot({
     isGlobal: true,
   }),
-  HttpModule
+  HttpModule,
 ],
+  exports: [TypeOrmModule],
   providers: [MoviesService],
-  controllers: [MoviesController]
+  controllers: [MoviesController],
 })
 export class MoviesModule {}
