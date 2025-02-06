@@ -7,6 +7,7 @@ import { UsersController } from './users/users.controller';
 import { DataSource } from 'typeorm';
 import { User } from './users/entities/user.entity';
 import { MoviesModule } from './movies/movies.module';
+import { ReservationModule } from './reservation/reservation.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { MoviesModule } from './movies/movies.module';
     }),
     UsersModule,
     MoviesModule,
+    ReservationModule,
   ],
   controllers: [AppController],
   providers: [AppService],
