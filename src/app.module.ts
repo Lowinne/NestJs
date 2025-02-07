@@ -17,7 +17,7 @@ import { Resa } from './movies/entities/resa.entity';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: process.env.DATABASE_HOSTNAME,
       port: parseInt(process.env.DATABASE_PORT || '5432'),
       username: process.env.DATABASE_USERNAME,
       password: process.env.DATABASE_PASSWORD,
