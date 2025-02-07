@@ -7,7 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Film } from './entities/film.entity';
 import { Resa } from './entities/resa.entity';
 import { Salle } from './entities/salle.entity';
-import { Session } from 'inspector/promises';
+import { Session } from './entities/session.entity';
 
 @Module({
   imports: [

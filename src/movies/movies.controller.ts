@@ -23,6 +23,26 @@ export class MoviesController {
         @Query('name') name: string,
         @Query('page') page: Number,
     ) {
-        return this.moviesService.searchByName(name, page)
+        return this.moviesService.searchByName(name, page);
+    }
+
+    @Get('movies')
+    async getMoviesFromDB(){
+        return this.moviesService.getAllMovies();
+    }
+
+    @Get('salles')
+    async getSalles(){
+        return this.moviesService.getAllSalles();
+    }
+
+    @Get('session')
+    async getSession(){
+        return this.moviesService.getAllSession();
+    }
+
+    @Get('resa')
+    async getReservation(){
+        return this.moviesService.getAllResa();
     }
 }

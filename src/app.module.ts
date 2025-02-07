@@ -8,6 +8,10 @@ import { DataSource } from 'typeorm';
 import { User } from './users/entities/user.entity';
 import { MoviesModule } from './movies/movies.module';
 import { ReservationModule } from './reservation/reservation.module';
+import { Session } from './movies/entities/session.entity';
+import { Film } from './movies/entities/film.entity';
+import { Salle } from './movies/entities/salle.entity';
+import { Resa } from './movies/entities/resa.entity';
 
 @Module({
   imports: [
@@ -18,7 +22,7 @@ import { ReservationModule } from './reservation/reservation.module';
       username: process.env.DATABASE_USERNAME,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      entities: [User],
+      entities: [User, Session, Film, Salle, Resa],
       synchronize: true,
       autoLoadEntities: true,
     }),

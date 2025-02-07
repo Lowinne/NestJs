@@ -78,6 +78,8 @@ async function seed() {
 
             session.salleId = salleData.id
 
+            console.log("session : " + session)
+
             await sessionRepository.save(session);
         }
     }

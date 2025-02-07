@@ -8,7 +8,7 @@ import { Film } from './entities/film.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Resa } from './entities/resa.entity';
 import { Salle } from './entities/salle.entity';
-import { Session } from 'inspector/promises';
+import { Session } from './entities/session.entity';
 
 @Injectable()
 export class MoviesService {
@@ -23,6 +23,22 @@ export class MoviesService {
     @InjectRepository(Session)
     private sessionRepository: Repository<Session>,
     ) {}
+
+    async getAllMovies(){
+      return this.filmsRepository.find();
+    }
+
+    async getAllSalles(){
+      return this.sallesRepository.find();
+    }
+
+    async getAllSession(){
+      return this.sessionRepository.find();
+    }
+
+    async getAllResa(){
+      return this.resasRepository.find();
+    }
 
   async searchByName(
     name: String,
