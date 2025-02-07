@@ -11,6 +11,6 @@ import { User } from 'src/users/entities/user.entity';
     TypeOrmModule.forFeature([Resa, Session, User])
   ],
   providers: [ReservationService],
-  controllers: [ReservationController]
+  controllers: [ReservationController],
 })
 export class ReservationModule {}
